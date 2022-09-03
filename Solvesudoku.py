@@ -5,6 +5,10 @@
 import collections
 from collections import defaultdict
 class Solution(object):
+    #SudokuisValid is to verify that the sudoku is correct.
+    # and I'm doing it by traversing the rows and columns.
+    # When it's not equal to 0, its key increases by 1.
+    # If the end, when the key value is greater than 1. The sudoku is incorrect
     def SudokuisValid(self,board):
         count1 = collections.defaultdict(int)
         count2 = collections.defaultdict(int)
@@ -26,7 +30,10 @@ class Solution(object):
                     return False
             count1.clear()
             count2.clear()
-
+        #SquareVaild is the way to verify Sudoku.
+        # and I do it by traversing each of the 9 squares.
+        # When it's not equal to 0, its key increases by 1.
+        # If the end, when the key value is greater than 1. The sudoku is incorrect
         def squareVaild(x, y):
             nonlocal board
             count3 = collections.defaultdict(int)
@@ -58,14 +65,14 @@ class Solution(object):
                         board[i][j]='.'
                 return False
         return True
-
+    #Board [ROW //3*3+ I //3][col//3*3+ I %3] Find the specific value of each position
     def isVaild(self,board,row,col,c):
         for i in range(9):
             if board[i][col] == c or board[row][i] == c or board[row//3*3+i//3][col//3*3+i%3] == c :
                 return False
         return True
 
-
+    #FindEmpty is to determine if you have completed Sudoku
     def findEmpty(self,board):
         for i in range(9):
             for j in range(9):
